@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/BurntSushi/toml"
+	"github.com/cespare/gost/internal/github.com/BurntSushi/toml"
 )
 
 type Conf struct {
@@ -67,7 +67,7 @@ func filterNamespace(ns string) (string, error) {
 		return "", err
 	}
 	ns = strings.NewReplacer("%H", hostname).Replace(ns)
-	sanitized, ok, _, rest := parseKey([]byte(ns + ":"), false)
+	sanitized, ok, _, rest := parseKey([]byte(ns+":"), false)
 	if !ok || len(rest) > 0 {
 		return "", fmt.Errorf("Bad tag: %s", ns)
 	}
